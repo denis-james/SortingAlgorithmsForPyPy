@@ -1,5 +1,4 @@
-
-def mainQuickSorter(List):
+def QuickSort(List):
     lowerbound=0
     upperbound=len(List)-1
     def pivotPlacer(lb,ub):
@@ -22,14 +21,10 @@ def mainQuickSorter(List):
                 List[h_pointer],List[lb]=List[lb],List[h_pointer]
                 return h_pointer
     def Sorter(lb,ub):
-        print(lb,ub)
         pivotPosition=pivotPlacer(lb,ub)
-        print(List)
         if lb<(pivotPosition-1):
             Sorter(lb,pivotPosition-1)
         if (pivotPosition+1)<ub:
-            Sorter(pivotPosition,ub)
-        
+            Sorter(pivotPosition+1,ub)
     Sorter(lowerbound,upperbound)
-    print(List)
-
+    return List
