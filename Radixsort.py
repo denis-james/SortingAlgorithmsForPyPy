@@ -1,5 +1,3 @@
-import math
-
 def RadixSort(MainList):
     def Sorter(List,PlaceOfSignificance):
         Buckets=[[] for i in range(10)]
@@ -11,12 +9,10 @@ def RadixSort(MainList):
             TempSorted=TempSorted+List
         return TempSorted
     largest=max(MainList)
-    largetstPlaceOfSignificance=math.floor(math.log(largest,10))+1
+    largetstPlaceOfSignificance=len(str(largest)
     Sandbox=MainList
-
     for i in range(largetstPlaceOfSignificance):
         Sandbox=Sorter(Sandbox,i+1)
-
     return Sandbox
 
 
