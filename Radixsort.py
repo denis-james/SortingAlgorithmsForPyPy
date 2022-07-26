@@ -9,7 +9,7 @@ def RadixSort(MainList):
             TempSorted=TempSorted+List
         return TempSorted
     largest=max(MainList)
-    largetstPlaceOfSignificance=len(str(largest)
+    largetstPlaceOfSignificance=len(str(largest))
     Sandbox=MainList
     for i in range(largetstPlaceOfSignificance):
         Sandbox=Sorter(Sandbox,i+1)
