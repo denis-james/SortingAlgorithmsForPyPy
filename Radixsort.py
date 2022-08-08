@@ -22,7 +22,6 @@ def RadixSort(MainList,radix=10):
 
     def Sorter(List,PlaceOfSignificance):
         Buckets=[[] for i in range(radix)]
-        print(PlaceOfSignificance)
         if radix!=10:
             if radix==2 or radix==8:
                 for i in List:
