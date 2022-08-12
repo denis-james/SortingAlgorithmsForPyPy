@@ -9,8 +9,6 @@ def RadixMtoL(MainList):
         return True
     def Organizer(Box,PlaceOfSignificance):
         
-        if Orderchecker(Box):
-            return Box
         Organized=[[] for i in range(10)]
         for i in Box:
             
@@ -27,7 +25,7 @@ def RadixMtoL(MainList):
         TheList=Organizer(TheList,PlaceOfSignificance)
         if type(TheList[0])==list:
             for i in range(len(TheList)):
-                if len(TheList[i])!=1 and PlaceOfSignificance!=1:
+                if len(TheList[i])!=1 and PlaceOfSignificance!=1 and not(Orderchecker(TheList[i])):
                     TheList[i]=Stacker(TheList[i],PlaceOfSignificance-1)
         return TheList
     def StackStraightner(TheList,ToBeReturned):
