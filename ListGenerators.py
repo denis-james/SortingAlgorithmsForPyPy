@@ -1,6 +1,5 @@
 
 import random
-import timeit
 from Radixsort import RadixSort
 
 
