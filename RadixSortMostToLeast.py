@@ -37,5 +37,3 @@ def RadixMtoL(MainList,radix):
                 ToBeReturned=StackStraightner(i,ToBeReturned)
         return ToBeReturned
     return StackStraightner(Stacker(MainList,largetstPlaceOfSignificance),[])
-
-theStack=RadixMtoL(TheIntegerList,10)
