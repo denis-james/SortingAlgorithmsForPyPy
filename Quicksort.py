@@ -1,5 +1,5 @@
 def QuickSort(List,Testing=False):
-    if Testing==True:
+    if Testing:
         EffortCounter=[0]
     lowerbound=0
     upperbound=len(List)-1
@@ -36,12 +36,11 @@ def QuickSort(List,Testing=False):
                 return h_pointer
     def Sorter(lb,ub):
         pivotPosition=pivotPlacer(lb,ub)
-        print(lb,pivotPosition,ub,"\n")
         if lb<(pivotPosition-1):
             Sorter(lb,pivotPosition-1)
         if (pivotPosition+1)<ub:
             Sorter(pivotPosition+1,ub)
     Sorter(lowerbound,upperbound)
-    if Testing==True:
+    if Testing:
         return EffortCounter[0]
     return List
