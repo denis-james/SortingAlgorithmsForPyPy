@@ -28,14 +28,15 @@ def QuickSort(List,Testing=False):
                 if Testing:
                     EffortCounter[0]+=1
                 return h_pointer
-    def Sorter(lb,ub):
-        pivotPosition=pivotPlacer(lb,ub)
-        print(lb,pivotPosition,ub,"\n")
-        if lb<(pivotPosition-1):
-            Sorter(lb,pivotPosition-1)
-        if (pivotPosition+1)<ub:
-            Sorter(pivotPosition+1,ub)
-    Sorter(lowerbound,upperbound)
+    partitions=[[lowerbound,upperbound]]
+    while len(partitions)!=0:
+        pivotposition=pivotPlacer(partitions[0][0],partitions[0][1])
+        # currentpartition=partitions.pop(0)
+        if pivotposition+1<partitions[0][1]:
+            partitions.insert(1,[pivotposition+1,partitions[0][1]])
+        if partitions[0][0]<pivotposition-1:
+            partitions.insert(1,[partitions[0][0],pivotposition-1])
+        del partitions[0]
     if Testing:
         return EffortCounter[0]
     return List
