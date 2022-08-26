@@ -31,7 +31,6 @@ def QuickSort(List,Testing=False):
     partitions=[[lowerbound,upperbound]]
     while len(partitions)!=0:
         pivotposition=pivotPlacer(partitions[0][0],partitions[0][1])
-        # currentpartition=partitions.pop(0)
         if pivotposition+1<partitions[0][1]:
             partitions.insert(1,[pivotposition+1,partitions[0][1]])
         if partitions[0][0]<pivotposition-1:
