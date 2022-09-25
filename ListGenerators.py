@@ -1,22 +1,23 @@
+
 import random
-from Radixsort import RadixSort
+from RadixsortLeastSignDig import RadixSortLSD
 from math import log2
 
 def RandomList(length,limit1=0,limit2=10000):
     return [random.randint(limit1,limit2) for i in range(length)]
 
-def PartiallyScrambled(length,Range=10000,fraction=.50):
-    thelist=RadixSort([random.randint(0,Range) for i in range(length)],10)
+def PartiallyScrambled(length,Range=10000,fraction=.5):
+    thelist=RadixSortLSD([random.randint(0,Range) for i in range(length)],2)
     temp=list(thelist)
-    positions=[random.randint(0,length-1) for i in range(int(length*fraction))]
-    Sortedpositions=RadixSort(positions,10)
-    for i in range(len(positions)):
-        thelist[int(positions[i])]=temp[Sortedpositions[i]]
-    del temp
-    return thelist
+    ShuffledIndeces=[i for i in range(length)]
+    random.shuffle(ShuffledIndeces)
+    SortedShuffledIndeces=RadixSortLSD(ShuffledIndeces[:int(fraction*length)],2)
+    for i in range(int(fraction*length)):
+        temp[SortedShuffledIndeces[i]]=thelist[ShuffledIndeces[i]]
+    return temp
 
 def ScrambledTips(length,end,Range=10000,fraction=.30):
-    thelist=RadixSort([random.randint(10,Range) for i in range(length)],10)
+    thelist=RadixSortLSD([random.randint(10,Range) for i in range(length)],10)
     temp=thelist
     indexlimit=int(length*fraction)
     if end==1:
@@ -32,11 +33,13 @@ def ScrambledTips(length,end,Range=10000,fraction=.30):
     return thelist
 
 def RepeatingEntries(length,limit1=0,limit2=1000):
-    Variety=RandomList(int(log2(length)),limit1,limit2)
-    return [Variety[random.randint(0,len(Variety)-1)] for i in range(length)]
+    Variation=RandomList(int(log2(length)),limit1,limit2)
+    return [Variation[random.randint(0,len(Variation)-1)] for i in range(length)]
+
+
 
 def Reversed(length,limit1=0,limit2=10000):
-    return RadixSort(RandomList(length,limit1,limit2),10)[::-1]
+    return RadixSortLSD(RandomList(length,limit1,limit2),10)[::-1]
 
 
 #---------------------------------------------------------------------------------
