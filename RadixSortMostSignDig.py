@@ -1,5 +1,5 @@
 import math
-def RadixMtoL(MainList,radix=10,Testing=False):
+def RadixSortMSD(MainList,radix=10,Testing=False):
     if Testing:
         EffortCounter=[0]
     largestPlaceOfSignificance=len(str(max(MainList)))
