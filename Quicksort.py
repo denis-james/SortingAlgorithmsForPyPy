@@ -1,30 +1,49 @@
-def QuickSort(List,Testing=False):
+def QuickSort(theList,Testing=False):
+    """
+    Sorts the given list using the QuickSort Sorting algorithm. 
+        Parameters:
+            theList: The integer List that is supposed to be sorted
+            Testing: A boolean variable that,
+                if false, will return the Sorted list without calculating the Effort
+                if true, will calculate and return the effort taken to sort the list only and not the sorted list itself. 
+        Returns:
+            SortedList: the sorted list(if Testing==False)
+            EffortCounter[0]: the effort taken to sort the list(if Testing==True)
+    """
+    SortedList=list(theList)
     if Testing:
         EffortCounter=[0]
     lowerbound=0
-    upperbound=len(List)-1
+    upperbound=len(SortedList)-1
     def pivotPlacer(lb,ub):
-        pivot=List[lb]
+        """
+        Places the pivot element in it's right position
+            Arguments:
+                lb,ub: The Indeces between which the pivot is supposed to be placed.
+            Returns:
+                h_pointer: the Index where the pivot is placed.
+        """
+        pivot=SortedList[lb]
         l_pointer=lb
         h_pointer=ub
         while l_pointer<h_pointer:
-            while List[l_pointer]<=pivot:
+            while SortedList[l_pointer]<=pivot:
                 if l_pointer==ub:
-                    List[lb],List[ub]=List[ub],List[lb]
+                    SortedList[lb],SortedList[ub]=SortedList[ub],SortedList[lb]
                     if Testing:
                         EffortCounter[0]+=1
                     return ub
                 l_pointer+=1
-            while List[h_pointer]>pivot:
+            while SortedList[h_pointer]>pivot:
                 h_pointer-=1
             if h_pointer==lb:
                 return lb
             if l_pointer<h_pointer:
-                List[l_pointer],List[h_pointer]=List[h_pointer],List[l_pointer]
+                SortedList[l_pointer],SortedList[h_pointer]=SortedList[h_pointer],SortedList[l_pointer]
                 if Testing:
                     EffortCounter[0]+=1
             else:
-                List[h_pointer],List[lb]=List[lb],List[h_pointer]
+                SortedList[h_pointer],SortedList[lb]=SortedList[lb],SortedList[h_pointer]
                 if Testing:
                     EffortCounter[0]+=1
                 return h_pointer
@@ -38,4 +57,4 @@ def QuickSort(List,Testing=False):
         del partitions[0]
     if Testing:
         return EffortCounter[0]
-    return List
+    return SortedList
