@@ -1,4 +1,4 @@
-def RadixSort(MainList):
+def RadixSortLSD(MainList):
     def Sorter(List,PlaceOfSignificance):
         Buckets=[[] for i in range(10)]
         for i in List:
